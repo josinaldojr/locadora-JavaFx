@@ -1,6 +1,7 @@
 package locadoraapp.model;
 
 import java.io.Serializable;
+import locadoraapp.model.enums.EstadoPagamento;
 
 public abstract class Pagamento implements Serializable{
 	private static final long serialVersionUID = 1L;
