@@ -18,17 +18,16 @@ import locadoraapp.model.exceptions.FilmeException;
 public interface Locadora {
     
     public void cadastrarCliente (Cliente cliente) throws ClienteException;
-    public void alteraCliente (Cliente cliente);
-    public void excluirCliente (Cliente cliente);
-    public List<Cliente> consultarCliente();
+    public Cliente alteraCliente (Cliente cliente)  throws ClienteException;
+    public boolean excluirCliente (Cliente cliente)  throws ClienteException;
+    public List<Cliente> consultarCliente(String nome, Integer id) throws ClienteException;
     public void cadastarAdmin (Administrador administrador) throws AdministradorException;
-    public void cadastrarFilme (Filme filme);
-    public void alterarFilme (Filme filme) throws FilmeException;
-    public void excluirFilme (Filme filme) throws FilmeException;
-    public List<ItemLocacaoPK> consultarDispFilme(Integer id, String nome);
+    public void cadastrarFilme (Filme filme) throws FilmeException ;
+    public Filme alterarFilme (Filme filme) throws FilmeException;
+    public boolean excluirFilme (Filme filme) throws FilmeException;
+    public List<Filme> consultarDispFilme(Integer id, String nome);
     public boolean verificaMulta(Date devolucao);
     public double gerarMulta(Date devolucao, Date atual);    
     public void locaFilme(Filme filme, Cliente cliente);
     public void devolverFilme(Filme filme, Cliente cliente);
-   
 }
