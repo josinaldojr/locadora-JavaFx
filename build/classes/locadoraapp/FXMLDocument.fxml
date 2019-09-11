@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="locadoraapp.FXMLDocumentController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Cadastro">
+            <items>
+                  <MenuItem fx:id="cadastrarCliente" mnemonicParsing="false" onAction="#handleMenuItemCadastrosClientes" text="Cadastrar Cliente" />
+              <MenuItem fx:id="cadastrarUsuario" mnemonicParsing="false" onAction="#handLeMenuItemCadastrosUsuarios" text="Cadastrar Usuario" />
+                  <MenuItem fx:id="cadastrarFilme" mnemonicParsing="false" onAction="#handLeMenuItemCadastrosFilmes" text="Cadastrar Filme" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Registros">
+            <items>
+              <MenuItem fx:id="registroVendas" mnemonicParsing="false" text="Vendas" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Processos">
+            <items>
+              <MenuItem fx:id="processosVendas" mnemonicParsing="false" text="Ajuda" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <AnchorPane fx:id="anchorPane" prefHeight="480.0" prefWidth="670.0">
+         <children>
+            <Button fx:id="btLocar" layoutX="87.0" layoutY="171.0" mnemonicParsing="false" onAction="#HandLeBotao" prefHeight="95.0" prefWidth="186.0" text="Locar Filme" />
+            <Button fx:id="btDevolver" layoutX="400.0" layoutY="171.0" mnemonicParsing="false" onAction="#HandLeBotao2" prefHeight="95.0" prefWidth="186.0" text="Devolver Filme" />
+         </children></AnchorPane>
+   </children>
+</VBox>

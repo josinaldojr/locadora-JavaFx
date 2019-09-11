@@ -42,7 +42,7 @@ public class ClienteDAO {
         } finally {
             ConnectionFactory.closeConnection(con, stnt);
         }
-
+    
     }
 
     public List<Cliente> read() {
@@ -54,7 +54,7 @@ public class ClienteDAO {
         List<Cliente> clientes = new ArrayList<>();
 
         try {
-            stnt = con.prepareStatement("SELECT * FROM cliente");
+            stnt = con.prepareStatement("SELECT * FROM locadora.cliente");
             rs = stnt.executeQuery();
             while (rs.next()) {
 
@@ -78,7 +78,7 @@ public class ClienteDAO {
 
     }
     
-    public List<Cliente> readForDesc(String desc) {
+    public List<Cliente> readForNome(String nome) {
         Connection con = ConnectionFactory.getConnection();
 
         PreparedStatement stnt = null;
@@ -87,8 +87,8 @@ public class ClienteDAO {
         List<Cliente> clientes = new ArrayList<>();
 
         try {
-            stnt = con.prepareStatement("SELECT * FROM produto WHERE descricao LIKE ?");
-            stnt.setString(1, "%"+desc+"%");
+            stnt = con.prepareStatement("SELECT * FROM cliente WHERE descricao NOME ?");
+            stnt.setString(1,"%"+nome+"%");
             
             rs = stnt.executeQuery();
             while (rs.next()) {
@@ -111,6 +111,39 @@ public class ClienteDAO {
 
         return clientes;
 
+    }
+    public void update(Cliente c) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        try {
+            stnt = con.prepareStatement("UPDATE cliente SET NOME = ? ,EMAIL = ?,CPFOUCNPJ = ? WHERE IDCLIENTE = ?");
+            stnt.setString(1, c.getNome());
+            stnt.setString(2, c.getEmail());
+            stnt.setString(3, c.getCpfOuCnpj());
+            stnt.setInt(4, c.getTipo());
+            stnt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Atualizado com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao atualizar: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stnt);
+
+        }
+    }
+
+    public void delete(Cliente c) {
+        Connection con = ConnectionFactory.getConnection();
+        PreparedStatement stnt = null;
+        try {
+            stnt = con.prepareStatement("DELETE FROM cliente WHERE IDCLIENTE = ?");
+            stnt.setInt(1, c.getId());
+            stnt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Excluido com sucesso!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Erro ao excluir: " + ex);
+        } finally {
+            ConnectionFactory.closeConnection(con, stnt);
+        }
     }
 
 }

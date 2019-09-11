@@ -16,13 +16,35 @@ import javafx.scene.Parent;
  */
 public class Locadoraapp extends Application {
     
+    private static Stage stage;
+    
+    private static Scene root, sistema;
+    
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage stage) throws Exception{
+        Locadoraapp.stage = stage;
         Parent root;
         root = FXMLLoader.load(getClass().getResource("Form_login.fxml"));
-        primaryStage.setTitle("LOCADORA");
-        primaryStage.setScene(new Scene(root, 800, 500));
-        primaryStage.show();
+        stage.setTitle("LOCADORA");
+        stage.setScene(new Scene(root, 800, 500));
+        stage.show();
+        
+        //Telas do APP:
+        
+        Parent telaSistema = FXMLLoader.load(getClass().getResource("FXMLSistema.fxml"));
+        Locadoraapp.sistema = new Scene(telaSistema);
+        
+    }
+    
+    public static void MudarTela(String tela){
+        switch(tela){
+        
+            case "login":
+                stage.setScene(root);
+                break;
+            case "sistema":
+                stage.setScene(sistema);
+        }
     }
 
     /**

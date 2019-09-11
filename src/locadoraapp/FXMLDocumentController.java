@@ -16,44 +16,48 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 
 /**
- * FXML Controller class
  *
- * @author Josinaldo
+ * @author Arthur
  */
-public class FXMLSistemaController implements Initializable {
+public class FXMLDocumentController implements Initializable {
+    
     
     @FXML
-    private MenuItem menuItemCadastrarDescricao;
-    @FXML
-    private MenuItem menuItemCadastrarCliente;   
-    @FXML
-    private MenuItem menuItemCadastrarFilme;
-    @FXML
-    private MenuItem menuItemCadastrarUsuario;
-    @FXML
-    private MenuItem menuItemProcessosLocacao;
-    @FXML
-    private MenuItem menuItemRelatoriosListadeCliente;
-    @FXML
-    private MenuItem menuItemRelatoriosListadeFilmes;
-    @FXML
-    private MenuItem menuItemRelatoriosFilmesDisponiveis;
-    @FXML
-    private AnchorPane anchorPane;
-    @FXML
     private Button btLocar;
+
     @FXML
     private Button btDevolver;
+    
+    @FXML
+    private MenuItem menuItemCadastrarCliente ;
+
+    @FXML
+    private MenuItem cadastrarUsuario;
+
+    @FXML
+    private MenuItem cadastrarFilme;
+
+    @FXML
+    private MenuItem registroVendas;
+
+    @FXML
+    private MenuItem processosVendas;
+
+    @FXML
+    private AnchorPane anchorPane;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-    } 
-    
+    }  
+        
     @FXML
     public void handleMenuItemCadastrarCliente() throws IOException{
         AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource("/locadoraapp/FXMLCadastroCliente.fxml"));
         anchorPane.getChildren().setAll(a);
     }
+            
+        
     public void handLeMenuItemCadastrosUsuarios() throws IOException{
         AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource ("/locadoraapp/CadastrarUsuario.fxml"));
         anchorPane.getChildren().setAll(a);
@@ -71,5 +75,4 @@ public class FXMLSistemaController implements Initializable {
         AnchorPane a = (AnchorPane) FXMLLoader.load(getClass().getResource ("/locadoraapp/DevolverFilme.fxml"));
         anchorPane.getChildren().setAll(a);
     }    
-    
 }
